@@ -34,7 +34,9 @@
             @auth
                 <li>
                     <span class="font-bold uppercase">
-                        Welcome {{ auth()->user()->name }}
+                        <a href="/users/profile/{{Auth::user()->id}}">
+                            Welcome {{ auth()->user()->name }}
+                        </a>
                     </span>
                 </li>
                 <li>
