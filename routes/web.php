@@ -34,7 +34,7 @@ Route::get('/listings/create', [ListingController::class, 'create'])->middleware
 // Store Listing Data
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
-// Show Edit Form
+// Show Edit Listing Form
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 // Update Listing
@@ -66,3 +66,12 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Show Users Profile
 Route::get('/users/profile/{user_id}', [UserController::class, 'show']);
+
+// Show Edit User Form
+Route::get('/users/{user_id}/edit', [UserController::class, 'edit'])->middleware('auth');
+
+// Update Listing
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+
+// Delete User
+Route::delete('/users/{user_id}', [UserController::class, 'destroy'])->middleware('auth');

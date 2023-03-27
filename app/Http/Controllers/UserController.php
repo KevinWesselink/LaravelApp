@@ -68,4 +68,41 @@ class UserController extends Controller
     public function show() {
         return view('users.profile');
     }
+
+    // Show Edit Form
+    public function edit(User $user) {
+        return view('users.edit', ['user' => $user]);
+    }
+
+    // Update User Data
+    public function update(Request $request, User $user) {
+
+        // Make sure logged in user is owner
+        if ($user->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $formFields = $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'email'],
+            'password' => 'required|confirmed'
+        ]);
+
+        $user->update($formFields);
+
+        return back()->with('message', 'User updated successfully!');
+    }
+
+    // Delete Listing
+    public function destroy(Request $request, User $user) {
+        // Make sure logged in user is owner
+        if ($user->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        // logout(Request $request);
+
+        // $user->delete();
+        return redirect('/')->with('message', 'User deleted successfully!');
+    }
 }
