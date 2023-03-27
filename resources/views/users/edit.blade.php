@@ -7,7 +7,7 @@
             <p class="mb-4">Edit: {{auth()->user()->name}}</p>
         </header>
 
-        <form method="POST" action="/users/{{Auth::user()->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/users/profile/{{Auth::user()->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">

@@ -70,8 +70,8 @@ Route::get('/users/profile/{user_id}', [UserController::class, 'show']);
 // Show Edit User Form
 Route::get('/users/{user_id}/edit', [UserController::class, 'edit'])->middleware('auth');
 
-// Update Listing
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+// Update User
+Route::put('/users/profile/{user_id}', [UserController::class, 'update'])->middleware('auth');
 
 // Delete User
-Route::delete('/users/{user_id}', [UserController::class, 'destroy'])->middleware('auth');
+//Route::delete('/users/{user_id}', [UserController::class, 'destroy'])->middleware('auth');
