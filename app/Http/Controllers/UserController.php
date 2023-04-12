@@ -93,7 +93,7 @@ class UserController extends Controller
         return back()->with('message', 'User updated successfully!');
     }
 
-    // Delete Listing
+    // Delete User
     public function destroy(Request $request, User $user) {
         // Make sure logged in user is owner
         if ($user->user_id != auth()->id()) {
